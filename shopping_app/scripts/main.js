@@ -65,3 +65,38 @@ function filterProducts() {
 
 
 }
+//load stored items from localStorage
+
+let cartItems =JSON.parse(localStorage.getItem("cartItems"))||[];
+console.log('Cart',cartItems);
+
+//add to cart btn
+productContainer.addEventListener("click", (e) => {
+    if (e.target.classList.contains("add-to-cart")) {
+        const productId = parseInt(e.target.id);
+        console.log(typeof productId);
+        console.log('Added to cart', productId)
+        const productMatched = shoeProducts.find((product) => product.id === productId);
+        if (productMatched) {
+
+            //check for duplicates
+            const duplicate = cartItems.some((item) => item.id === productMatched.id);
+            if (!duplicate) {
+                cartItems.push(productMatched)
+                //add item to localStorage
+                localStorage.setItem("cartItems",JSON.stringify(cartItems));
+                alert('Cart saved to local storage');
+                // renderCart();
+            } else {
+                alert('Product already added to cart');
+            }
+
+
+        } else {
+            alert('Product not found')
+        }
+
+
+    }
+})
+
