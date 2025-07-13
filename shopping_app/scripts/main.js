@@ -65,9 +65,3 @@ function filterProducts() {
 
 
 }
-productContainer.addEventListener("click",(e)=>{
-    if(e.target.classList.contains("add-to-cart")){
-        const productId=e.target.id;
-        console.log("Add to cart:",productId);
-    }
-})
