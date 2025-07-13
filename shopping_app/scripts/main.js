@@ -1,81 +1,73 @@
 import { shoeProducts } from "./data.js";
 
-
-//select product container
-const productsContainer = document.getElementById("products-container");
-productsContainer.innerHTML = "";
-
-//sort items using dropdown
-const selectContainer = document.getElementById("select");
-console.log(selectContainer.value);
-//store options selected
-const options = ["All"];
-shoeProducts.forEach((cat) => {
-
-    options.push(cat.category);
-});
-console.log('Options: ', options);
-//loop through each options
-
-//loop through each option 
-//add its value to be the value of the option
-for (let i = 0; i < options.length; i++) {
-    //create option based on each option value
-    const optionElement = document.createElement("option");
-    selectContainer.appendChild(optionElement);
-    optionElement.value = options[i];
-    optionElement.textContent = options[i];
-
+const productContainer = document.getElementById("products-container");
+const selectedCategory = document.getElementById("selected-category");
+//store all categories
+const categories = [];
+//store all categories
+shoeProducts.map((product) => {
+    categories.push(product.category)
+})
+//loop through categories
+for (let i = 0; i < categories.length; i++) {
+    const option = document.createElement("option");
+    option.value = categories[i];
+    option.textContent = categories[i];
+    selectedCategory.appendChild(option);
 }
 
-//
+//display products
+//based on the selected value
+selectedCategory.addEventListener("change", filterProducts);
+document.addEventListener("DOMContentLoaded", filterProducts);
+function filterProducts() {
+    productContainer.innerHTML = "";
+    //filter products to those matching the category selected
+    //ie if category is equal to value selected
+    const choice = selectedCategory.value;
+    //get all products
+    shoeProducts.map((product) => {
+        if (choice === 'All') {
+            productContainer.innerHTML += `
+            <div class="card">
+                <h2 class="title">${product.title}</h2>
+                <img src="${product.image || 'https://via.placeholder.com/400x400?text=No+Image'}" class="product-image" alt="${product.title}" />
+                <br>
+                <button class="add-to-cart" id="${product.id}">Add to Cart</button>
+                <p class="description">${product.description}</p>
+                <p class="product-price"><strong>Price:</strong> ${product.price}</p>
+                <p class="category"><strong>Category:</strong> ${product.category}</p>
+                <p class="ratings"><strong>Rating:</strong> ${product.rating} ⭐ reviews</p>
+            </div>
+        `;
 
-
-//add event listener to the select container
-selectContainer.addEventListener("change", () => {
-    const selectedCategory = selectContainer.value;
-    if (selectedCategory === 'All') {
-        //get all the products
-        //get products with category of all
-        //display them
-        shoeProducts.map((product) =>{
-                  productsContainer.innerHTML += `
-    <div class="card">
-    <h2><strong>${product.category}</strong></h2>
-     <img src="${product.image !== undefined ? `${product.image}` : `no image`}" alt="${product.title}"/>
-    <p>${product.description}</p>
-   
-    <p><strong>${product.title}</strong></p>
-    <p><strong>${product.price}</strong></p>
-    </>`
         }
-        )
+        if (product.category === choice && choice != 'All') {
+            productContainer.innerHTML += `
+            <div class="card">
+                <h2 class="title">${product.title}</h2>
+                <img src="${product.image || 'https://via.placeholder.com/400x400?text=No+Image'}" class="product-image" alt="${product.title}" />
+                <br>
+                <button class="add-to-cart" id="${product.id}">Add to Cart</button>
+                <p class="description">${product.description}</p>
+                <p class="product-price"><strong>Price:</strong> ${product.price}</p>
+                <p class="category"><strong>Category:</strong> ${product.category}</p>
+                <p class="ratings"><strong>Rating:</strong> ${product.rating} ⭐ reviews</p>
+            </div>
+        `;
+
+        }
+
+
+
+
+    })
+
+
+}
+productContainer.addEventListener("click",(e)=>{
+    if(e.target.classList.contains("add-to-cart")){
+        const productId=e.target.id;
+        console.log("Add to cart:",productId);
     }
-    if(selectedCategory!='All'){
-        console.log(`You have selected:${selectedCategory} `)
-    }
-
-    //get all the products
-    //display them
-
-
-    // if(selectedCategory!='All'){
-    //     console.log(`${selectedCategory} has been selected`);
-    // }
-});
-
-
-
-
-
-
-
-
-
-
-
-// //map the products
-// function displayProducts(products){
-//     products.map((product)=>product)
-// }
-// displayProducts(shoeProducts);
+})
