@@ -85,10 +85,10 @@ productContainer.addEventListener("click", (e) => {
                 cartItems.push(productMatched)
                 //add item to localStorage
                 localStorage.setItem("cartItems",JSON.stringify(cartItems));
-                alert('Cart saved to local storage');
+                alert('Item added to Cart');
                 // renderCart();
             } else {
-                alert('Product already added to cart');
+                alert('Item already added to cart');
             }
 
 
