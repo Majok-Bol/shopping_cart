@@ -81,6 +81,7 @@ productContainer.addEventListener("click", (e) => {
 
             //check for duplicates
             const duplicate = cartItems.some((item) => item.id === productMatched.id);
+            console.log("Duplicate: ",duplicate);
             if (!duplicate) {
                 cartItems.push(productMatched)
                 //add item to localStorage
