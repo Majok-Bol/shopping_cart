@@ -1,13 +1,11 @@
 console.log('Orders is working fine');
-const myOrders=document.getElementById("orders");
-const emptyOrder=document.getElementById("empty-order");
-const storedOrders=JSON.parse(localStorage.getItem("orderedItems"))||[];
-       myOrders.innerHTML="";
-console.log('Stored orders: ',storedOrders);
-
-    storedOrders.forEach((product)=>{
- 
-     myOrders.innerHTML += `
+const myOrders = document.getElementById("orders");
+const emptyOrder = document.getElementById("empty-order");
+const storedOrders = JSON.parse(localStorage.getItem("orderedItems")) || [];
+myOrders.innerHTML = "";
+console.log('Stored orders: ', storedOrders);
+storedOrders.forEach((product) => {
+    myOrders.innerHTML += `
             <div class="cart-items" data-id="${product.id}">
                 <h2 class="title">${product.title}</h2>
                 <img src="${product.image || 'https://via.placeholder.com/400x400?text=No+Image'}" class="product-image" alt="${product.title}" />
@@ -18,4 +16,8 @@ console.log('Stored orders: ',storedOrders);
                 <p class="ratings"><strong>Rating:</strong> ${product.rating} ⭐ reviews</p>
             </div>
         `
-    })
+})
+
+
+
+
