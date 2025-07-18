@@ -1,10 +1,12 @@
 const cart = document.getElementById("cart");
-// const emptyCart = document.getElementById("empty-cart");
+const emptyCart = document.getElementById("empty-cart");
 let storedItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-console.log('Initial Data: ', storedItems);
+console.log('Initial stored Data: ', storedItems);
 cart.innerHTML = "";
-
-
+if(storedItems.length===0){
+    emptyCart.style.display='block';
+}else{
+    emptyCart.style.display='none';
 storedItems.forEach((product) => {
     cart.innerHTML += `
             <div class="cart-items" data-id="${product.id}">
@@ -20,6 +22,9 @@ storedItems.forEach((product) => {
             </div>
         `
 })
+}
+
+
 
 
 

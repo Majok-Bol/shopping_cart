@@ -40,7 +40,6 @@ function filterProducts() {
                 <p class="ratings"><strong>Rating:</strong> ${product.rating} ⭐ reviews</p>
             </div>
         `;
-
         }
         if (product.category === choice && choice != 'All') {
             productContainer.innerHTML += `
@@ -55,7 +54,6 @@ function filterProducts() {
                 <p class="ratings"><strong>Rating:</strong> ${product.rating} ⭐ reviews</p>
             </div>
         `;
-
         }
 
 
