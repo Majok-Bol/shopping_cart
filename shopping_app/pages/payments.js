@@ -9,7 +9,7 @@ let initialAmount = parseFloat(localStorage.getItem("balance"));
 const initialBalance = document.getElementById("initial-balance");
 // if (isNaN(initialAmount)) {
 //     initialAmount = 0.0;
-// }else{
+// }
 initialBalance.textContent = `${initialAmount.toFixed(2)} USD`;
 
 
