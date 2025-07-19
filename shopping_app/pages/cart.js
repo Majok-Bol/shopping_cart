@@ -3,10 +3,7 @@ const emptyCart = document.getElementById("empty-cart");
 let storedItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 console.log('Initial stored Data: ', storedItems);
 cart.innerHTML = "";
-if(storedItems.length===0){
-    emptyCart.style.display='block';
-}else{
-    emptyCart.style.display='none';
+
 storedItems.forEach((product) => {
     cart.innerHTML += `
             <div class="cart-items" data-id="${product.id}">
@@ -22,7 +19,7 @@ storedItems.forEach((product) => {
             </div>
         `
 })
-}
+
 
 
 
@@ -57,20 +54,26 @@ cart.addEventListener("click", (e) => {
         console.log('Item to order: ', itemToOrder);
         //check local storage
         const orderedList = JSON.parse(localStorage.getItem("orderedItems")) || [];
+            console.log("Ordered items: ",orderedList);
         //check for duplicates
         const duplicate = orderedList.some((item) => item.id === itemId);
         console.log("Duplicate: ", duplicate);
         if (!duplicate) {
             orderedList.push(...itemToOrder);
+             
             alert("Item added to Order list");
             //add to local storage
             localStorage.setItem("orderedItems", JSON.stringify(orderedList));
+       
             //update the cart by removing item added to order list
             const updateCartItems = cart.filter((item) => item.id !== itemId);
             localStorage.setItem("cartItems", JSON.stringify(updateCartItems));
+
+            
         } else {
             alert("Item already on order List");
         }
+
 
 
     }

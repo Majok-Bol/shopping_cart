@@ -2,15 +2,20 @@ import { grandTotal } from "./total.js";
 console.log("Payments is working");
 const deposit = document.getElementById("deposit");
 const buy = document.getElementById("buy");
-const balance = document.getElementById("balance");
+
 const input = document.getElementById("input");
-let initialAmount = parseFloat(localStorage.getItem("balance"));
+let initialAmount = parseFloat(JSON.parse(localStorage.getItem("balance")));
+console.log("Type ",typeof initialAmount);
+console.log("Initial amount in the account: ",initialAmount);
 
 const initialBalance = document.getElementById("initial-balance");
-// if (isNaN(initialAmount)) {
-//     initialAmount = 0.0;
-// }
+if (isNaN(initialAmount)) {
+    initialAmount = 0.0;
 initialBalance.textContent = `${initialAmount.toFixed(2)} USD`;
+}else{
+   initialBalance.textContent = `${initialAmount.toFixed(2)} USD`; 
+}
+
 
 
 const max = 10000;
