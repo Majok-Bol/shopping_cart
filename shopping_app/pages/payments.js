@@ -80,7 +80,7 @@ buy.addEventListener("click", () => {
         let balance = (initialAmount - totalPrice).toFixed(2);
         //update local storage
         localStorage.setItem("balance", JSON.stringify(balance));
-        alert("Item paid successfully");
+        alert("Order paid successfully");
 
 
 
