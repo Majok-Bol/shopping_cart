@@ -5,17 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
+        <link rel="stylesheet" href="/shopping_app/index.css"/>
 </head>
 
 <body>
-    <main id="main">
-        <header>
+
+
+    <header>
+      <div id="navbar">
             <a href="/shopping_app/main.html">Home</a>
-        </header>
-        <div id="products-container"></div>
-    </main>
+              <a href="/shopping_app/pages/cart.html"> 🛒Cart</a>
+              <a href="/shopping_app/pages/orders.html">My Orders</a>
+              <a href="/shopping_app/pages/payments.html">Payments</a>
+              <a href="/shopping_app/pages/privacy.html">Privacy Policy</a>
+            </div>
+
+    </header>
     <h1>Cart Items</h1>
     <div id="cart"></div>
+    <p id="empty-cart">Your Cart is empty</p>
     <script src="./cart.js"></script>
 </body>
+
 </html>

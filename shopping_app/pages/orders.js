@@ -4,6 +4,10 @@ const emptyOrder = document.getElementById("empty-order");
 const storedOrders = JSON.parse(localStorage.getItem("orderedItems")) || [];
 myOrders.innerHTML = "";
 console.log('Stored orders: ', storedOrders);
+if(storedOrders.length===0){
+    emptyOrder.style.display='block';
+}else{
+emptyOrder.style.display='none';
 storedOrders.forEach((product) => {
     myOrders.innerHTML += `
             <div class="cart-items" data-id="${product.id}">
@@ -17,6 +21,8 @@ storedOrders.forEach((product) => {
             </div>
         `
 })
+}
+
 
 
 

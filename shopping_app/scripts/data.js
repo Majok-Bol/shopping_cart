@@ -37,7 +37,7 @@ export const shoeProducts = [
   },
   {
     id: 5,
-    category: "Dress",
+    category: "Executive",
     description: "Elegant leather oxfords with cushioned insoles.",
     image: "https://images.unsplash.com/photo-1585147877975-6acd0a929a46?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTg4fHxzaG9lfGVufDB8fDB8fHww",
     price: "$99.99",

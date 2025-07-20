@@ -85,7 +85,8 @@ productContainer.addEventListener("click", (e) => {
                 //add item to localStorage
                 localStorage.setItem("cartItems",JSON.stringify(cartItems));
                 alert('Item added to Cart');
-                // renderCart();
+                // remove that item from cart
+                
             } else {
                 alert('Item already added to cart');
             }
@@ -99,3 +100,11 @@ productContainer.addEventListener("click", (e) => {
     }
 })
 
+const links = document.querySelectorAll("header a");
+const currrentPage = window.location.pathname;
+console.log("Current Path: ", currentPage);
+links.forEach((link => {
+    if (currentPage.includes(link.getAttribute("href"))) {
+        link.classList.add("active");
+    }
+}))
