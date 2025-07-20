@@ -13,7 +13,7 @@ clearData.addEventListener("click", () => {
 })
 const links = document.querySelectorAll("header a");
 const currrentPage = window.location.pathname;
-console.log("Current Path: ", currentPage);
+
 links.forEach((link => {
     if (currentPage.includes(link.getAttribute("href"))) {
         link.classList.add("active");

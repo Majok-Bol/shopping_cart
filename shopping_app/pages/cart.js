@@ -1,7 +1,6 @@
 const cart = document.getElementById("cart");
 const emptyCart = document.getElementById("empty-cart");
 let storedItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-console.log('Initial stored Data: ', storedItems);
 cart.innerHTML = "";
 if (storedItems.length === 0) {
     emptyCart.style.display = 'block';

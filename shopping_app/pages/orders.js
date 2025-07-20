@@ -1,9 +1,9 @@
-console.log('Orders is working fine');
+
 const myOrders = document.getElementById("orders");
 const emptyOrder = document.getElementById("empty-order");
 const storedOrders = JSON.parse(localStorage.getItem("orderedItems")) || [];
 myOrders.innerHTML = "";
-console.log('Stored orders: ', storedOrders);
+
 if(storedOrders.length===0){
     emptyOrder.style.display='block';
 }else{
